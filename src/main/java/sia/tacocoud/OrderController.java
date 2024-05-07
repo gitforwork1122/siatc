@@ -2,6 +2,7 @@ package sia.tacocoud;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.ui.Model;
 
@@ -42,9 +43,9 @@ public class OrderController {
     public String ordersForUser(
             @AuthenticationPrincipal User user, Model model) {
 
-
+        Pageable pageable = PageRequest.of(0, 20);
         model.addAttribute("orders",
-                orderRepo.findByUserOrderByPlacedAtDesc(user));
+                orderRepo.findByUserOrderByPlacedAtDesc(user, pageable));
         return "orderList";
     }
 

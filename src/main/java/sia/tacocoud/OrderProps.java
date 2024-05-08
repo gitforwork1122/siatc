@@ -1,0 +1,20 @@
+package sia.tacocoud;
+
+
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+@Component
+@ConfigurationProperties(prefix="taco.order")
+@Data
+public class OrderProps {
+
+
+    @Min(value=5, message="must be between 5 and 25")
+    @Max(value=5, message="must be between 5 and 25")
+    private int pageSize = 20;
+
+}

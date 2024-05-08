@@ -2,6 +2,12 @@ package sia.tacocoud;
 
 
 import lombok.extern.slf4j.Slf4j;
+
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.ui.Model;
@@ -20,7 +26,6 @@ import sia.tacocoud.repository.UserRepository;
 
 
 
-@Slf4j
 @Controller
 @RequestMapping("/orders")
 @SessionAttributes("order")
@@ -29,10 +34,16 @@ public class OrderController {
     private final UserRepository userRepository;
     private OrderRepository orderRepo;
 
-    public OrderController(OrderRepository orderRepo, UserRepository userRepository) {
+    private OrderProps props;
+    private int pageSize = 20;
+
+
+    public OrderController(OrderRepository orderRepo, UserRepository userRepository, OrderProps props) {
         this.orderRepo = orderRepo;
         this.userRepository = userRepository;
+        this.props = props;
     }
+
 
     @GetMapping("/current")
     public String orderForm() {
@@ -43,7 +54,7 @@ public class OrderController {
     public String ordersForUser(
             @AuthenticationPrincipal User user, Model model) {
 
-        Pageable pageable = PageRequest.of(0, 20);
+        Pageable pageable = PageRequest.of(0, props.getPageSize());
         model.addAttribute("orders",
                 orderRepo.findByUserOrderByPlacedAtDesc(user, pageable));
         return "orderList";

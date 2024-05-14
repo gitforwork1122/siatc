@@ -1,4 +1,4 @@
-package sia.tacocoud.repository;
+package sia.tacocoud.data;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

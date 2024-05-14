@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name="Taco_order")
-public class TacoOrder implements Serializable {
+public class Order implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,7 +45,7 @@ public class TacoOrder implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Taco> tacos = new ArrayList<>();
-    public void addTaco(Taco taco) {
+    public void addDesign(Taco taco) {
         this.tacos.add(taco);
     }
 }

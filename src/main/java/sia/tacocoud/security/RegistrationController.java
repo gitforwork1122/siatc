@@ -1,4 +1,4 @@
-package sia.tacocoud;
+package sia.tacocoud.security;
 
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import sia.tacocoud.repository.UserRepository;
+import sia.tacocoud.data.UserRepository;
 
 @Controller
 @RequestMapping("/register")

@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import sia.tacocoud.Ingredient;
 import sia.tacocoud.Taco;
-import sia.tacocoud.repository.IngredientRepository;
-import sia.tacocoud.repository.TacoRepository;
-import sia.tacocoud.repository.UserRepository;
+import sia.tacocoud.data.IngredientRepository;
+import sia.tacocoud.data.TacoRepository;
+import sia.tacocoud.data.UserRepository;
 
 import java.util.Arrays;
 import sia.tacocoud.Ingredient.Type;

@@ -2,7 +2,7 @@ package sia.tacocoud.security;
 
 import lombok.Data;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import sia.tacocoud.User;
+import sia.tacocoud.model.User;
 
 @Data
 public class RegistrationForm {

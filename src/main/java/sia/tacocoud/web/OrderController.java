@@ -2,7 +2,6 @@ package sia.tacocoud.web;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
 import jakarta.validation.Valid;
@@ -10,15 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
-import sia.tacocoud.Ingredient;
-import sia.tacocoud.Order;
-import sia.tacocoud.Taco;
-import sia.tacocoud.User;
-import sia.tacocoud.data.IngredientRepository;
+import sia.tacocoud.model.Order;
+import sia.tacocoud.model.User;
 import sia.tacocoud.data.OrderRepository;
-import sia.tacocoud.data.TacoRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

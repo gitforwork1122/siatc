@@ -4,14 +4,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import sia.tacocoud.Ingredient;
-import sia.tacocoud.Taco;
+import sia.tacocoud.model.Ingredient;
+import sia.tacocoud.model.Taco;
 import sia.tacocoud.data.IngredientRepository;
 import sia.tacocoud.data.TacoRepository;
 import sia.tacocoud.data.UserRepository;
 
 import java.util.Arrays;
-import sia.tacocoud.Ingredient.Type;
+import sia.tacocoud.model.Ingredient.Type;
 
 @Configuration
 public class StartDataConfig {

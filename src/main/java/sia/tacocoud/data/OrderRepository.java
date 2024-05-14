@@ -3,8 +3,8 @@ package sia.tacocoud.data;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import sia.tacocoud.Order;
-import sia.tacocoud.User;
+import sia.tacocoud.model.Order;
+import sia.tacocoud.model.User;
 import java.util.List;
 
 @Repository

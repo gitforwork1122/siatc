@@ -1,4 +1,4 @@
-package sia.tacocoud;
+package sia.tacocoud.model;
 
 
 import jakarta.persistence.*;

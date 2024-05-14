@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import java.util.ArrayList;
 import java.util.List;
-import sia.tacocoud.Ingredient;
-import sia.tacocoud.Ingredient.Type;
-import sia.tacocoud.Order;
-import sia.tacocoud.Taco;
+import sia.tacocoud.model.Ingredient;
+import sia.tacocoud.model.Ingredient.Type;
+import sia.tacocoud.model.Order;
+import sia.tacocoud.model.Taco;
 import sia.tacocoud.data.IngredientRepository;
 import sia.tacocoud.data.TacoRepository;
 

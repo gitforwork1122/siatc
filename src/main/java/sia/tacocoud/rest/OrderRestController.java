@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-import sia.tacocoud.Order;
+import sia.tacocoud.model.Order;
 import sia.tacocoud.data.OrderRepository;
 
 @RequiredArgsConstructor

@@ -20,7 +20,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(path = "/api/v1/tacos", produces = "application/json")
+@RequestMapping(path = "/api/tacos", produces = "application/json")
 @CrossOrigin(origins = "*")
 public class TacoRestController {
     private final TacoRepository tacoRepo;

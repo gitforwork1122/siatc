@@ -19,8 +19,8 @@ import sia.tacocoud.data.OrderRepository;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(path = "/api/orders", produces = "application/json")
-@CrossOrigin(origins = "*")
+@RequestMapping(path = "/old/api/orders", produces = "application/json")
+@CrossOrigin(origins = "http://localhost:8080")
 public class OrderRestController {
 
     private final OrderRepository orderRepository;

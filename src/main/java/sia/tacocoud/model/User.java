@@ -35,8 +35,6 @@ public class User implements UserDetails {
     private final String phoneNumber;
 
 
-
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));

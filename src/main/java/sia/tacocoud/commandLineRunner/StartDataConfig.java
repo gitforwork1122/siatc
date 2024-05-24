@@ -3,23 +3,15 @@ package sia.tacocoud.commandLineRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import sia.tacocoud.model.Ingredient;
 import sia.tacocoud.model.Taco;
 import sia.tacocoud.data.IngredientRepository;
 import sia.tacocoud.data.TacoRepository;
 import sia.tacocoud.data.UserRepository;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
 import sia.tacocoud.model.Ingredient.Type;
-import sia.tacocoud.model.User;
-import sia.tacocoud.security.UserDetailsService;
+
 
 @Configuration
 public class StartDataConfig {

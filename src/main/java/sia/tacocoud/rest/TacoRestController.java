@@ -21,7 +21,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(path = "/api/tacos", produces = "application/json")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:8080")
 public class TacoRestController {
     private final TacoRepository tacoRepo;
 

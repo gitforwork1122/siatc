@@ -9,7 +9,7 @@ import sia.tacocoud.data.OrderRepository;
 import sia.tacocoud.model.Order;
 
 @RestController
-@RequestMapping(path = "/api/rabbit/orders", produces = "application/json")
+@RequestMapping(path = "/api/orders", produces = "application/json")
 @CrossOrigin(origins = "http://localhost:8080")
 public class OrderApiController {
 

@@ -19,7 +19,7 @@ import sia.tacocoud.data.TacoRepository;
 
 @Slf4j
 @Controller
-@RequestMapping("/design")
+@RequestMapping("/api/design")
 @SessionAttributes("order")
 public class DesignTacoController {
 

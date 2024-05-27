@@ -18,7 +18,7 @@ import java.util.List;
 
 @Slf4j
 @Controller
-@RequestMapping("/orders")
+@RequestMapping("/api/old/orders")
 @SessionAttributes("order")
 public class OrderController {
 

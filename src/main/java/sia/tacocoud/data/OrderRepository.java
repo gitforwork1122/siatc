@@ -8,8 +8,7 @@ import sia.tacocoud.model.User;
 import java.util.List;
 
 
-public interface OrderRepository
-        extends CrudRepository<Order, Long> {
+public interface OrderRepository extends CrudRepository<Order, Long> {
 
     List<Order> findByUserOrderByPlacedAtDesc(User user);
 

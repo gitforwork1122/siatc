@@ -11,7 +11,7 @@ import sia.tacocoud.model.Ingredient;
 @CrossOrigin(origins="http://localhost:8080")
 public class IngredientRestController {
 
-    private IngredientRepository ingredientRepository;
+    private final IngredientRepository ingredientRepository;
 
     @Autowired
     public IngredientRestController(IngredientRepository ingredientRepository) {

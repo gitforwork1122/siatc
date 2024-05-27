@@ -1,5 +1,7 @@
 package sia.tacocoud.commandLineRunner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +17,8 @@ import sia.tacocoud.model.Ingredient.Type;
 
 @Configuration
 public class StartDataConfig {
+
+    private static final Logger log = LoggerFactory.getLogger(StartDataConfig.class);
 
     @Bean
     public CommandLineRunner dataLoader(
@@ -43,6 +47,8 @@ public class StartDataConfig {
                     "SLSA", "Salsa", Type.SAUCE);
             Ingredient sourCream = new Ingredient(
                     "SRCR", "Sour Cream", Type.SAUCE);
+            log.info("Saving ingredients...");
+            log.info("THIS IS A LOG");
             repo.save(flourTortilla);
             repo.save(cornTortilla);
             repo.save(groundBeef);
@@ -53,6 +59,7 @@ public class StartDataConfig {
             repo.save(jack);
             repo.save(salsa);
             repo.save(sourCream);
+            log.info("Ingredients saved");
             Taco taco1 = new Taco();
             taco1.setName("Carnivore");
             taco1.setIngredients(Arrays.asList(

@@ -3,18 +3,14 @@ package sia.tacocoud.messaging;
 import jakarta.jms.Destination;
 import org.apache.activemq.artemis.jms.client.ActiveMQQueue;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import sia.tacocoud.model.Order;
 
 import java.util.HashMap;
 import java.util.Map;
-
+@Configuration
 public class MessagingConfig {
-
-    @Bean
-    public Destination orderQueue() {
-        return new ActiveMQQueue("tacocloud.order.queue");
-    }
 
     @Bean
     public MappingJackson2MessageConverter messageConverter() {

@@ -1,20 +1,23 @@
 package sia.tacocoud.messaging;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import sia.tacocoud.data.OrderRepository;
 import sia.tacocoud.model.Order;
 
 @RestController
-@RequestMapping(path = "/api/orders", produces = "application/json")
+@RequestMapping(path = "/api/rabbit/orders", produces = "application/json")
 @CrossOrigin(origins = "http://localhost:8080")
-public class OrderApiContorller {
+public class OrderApiController {
 
+    private static final Logger log = LoggerFactory.getLogger(OrderApiController.class);
     private final OrderRepository repo;
     private final OrderMessagingService messagingService;
 
-    public OrderApiContorller(OrderRepository repo, OrderMessagingService messagingService) {
+    public OrderApiController(OrderRepository repo, OrderMessagingService messagingService) {
         this.repo = repo;
         this.messagingService = messagingService;
     }
@@ -23,12 +26,9 @@ public class OrderApiContorller {
     @ResponseStatus(HttpStatus.CREATED)
     public Order postOrder(@RequestBody Order order) {
         messagingService.sendOrder(order);
+        log.info("CREATED ORDER: {}", order.toString());
         return repo.save(order);
     }
-
-
-
-
 }
 
 

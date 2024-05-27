@@ -18,7 +18,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true)
+@EnableMethodSecurity(securedEnabled = false, jsr250Enabled = true)
 public class SecurityConfig {
 
     @Bean
@@ -27,7 +27,8 @@ public class SecurityConfig {
     }
 
 
-// In memory authentication
+    // In memory authentication
+    @Bean
     public InMemoryUserDetailsManager userDetailsService(PasswordEncoder encoder) {
         UserDetails user = User.builder()
                 .username("user")
@@ -38,27 +39,38 @@ public class SecurityConfig {
     }
 
 
+    //    @Bean
+//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        return http.authorizeHttpRequests(request -> request
+//                        .requestMatchers("/design/**", "/order/**").hasRole("USER")
+//                        .requestMatchers("/design/**", "/order/**").hasRole("USER")
+//                        .anyRequest().permitAll())
+//                .formLogin(login -> login.loginPage("/login").permitAll().defaultSuccessUrl("/design"))
+//                .logout(logout -> logout.logoutUrl("/logout").permitAll().logoutSuccessUrl("/login"))
+//                .httpBasic(Customizer.withDefaults())
+//                .build();
+//    }
+//
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        return http.authorizeHttpRequests(authz -> authz
+//                        .requestMatchers(HttpMethod.POST, "api/ingredients").hasAuthority("SCOPE_deleteIngredients")
+//                        .requestMatchers(HttpMethod.POST, "api/ingredients").hasAuthority("SCOPE_deleteIngredients"))
+//                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults())).build();
+//    }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.authorizeHttpRequests(request -> request
-                        .requestMatchers("/design/**", "/order/**").hasRole("USER")
-                        .anyRequest().permitAll())
+        return http.authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/api/**").permitAll()
+                        .anyRequest()
+                )
                 .formLogin(login -> login.loginPage("/login").permitAll().defaultSuccessUrl("/design"))
                 .logout(logout -> logout.logoutUrl("/logout").permitAll().logoutSuccessUrl("/login"))
                 .httpBasic(Customizer.withDefaults())
                 .build();
-    }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.authorizeHttpRequests(authz -> authz
-                        .requestMatchers(HttpMethod.POST, "api/ingredients").hasAuthority("SCOPE_deleteIngredients")
-                        .requestMatchers(HttpMethod.POST, "api/ingredients").hasAuthority("SCOPE_deleteIngredients"))
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults())).build();
+
     }
 
 
 }
-
-
-

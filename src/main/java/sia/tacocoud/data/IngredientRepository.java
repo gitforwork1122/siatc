@@ -6,6 +6,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import sia.tacocoud.model.Ingredient;
 
 @CrossOrigin(origins="http://localhost:8080")
-public interface IngredientRepository
-        extends CrudRepository<Ingredient, String> {
+public interface IngredientRepository extends CrudRepository<Ingredient, String> {
 }

@@ -5,12 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import sia.tacocoud.model.Ingredient;
 import sia.tacocoud.model.Taco;
 import sia.tacocoud.data.IngredientRepository;
 import sia.tacocoud.data.TacoRepository;
-import sia.tacocoud.data.UserRepository;
 import java.util.Arrays;
 import sia.tacocoud.model.Ingredient.Type;
 
@@ -23,8 +21,6 @@ public class StartDataConfig {
     @Bean
     public CommandLineRunner dataLoader(
             IngredientRepository repo,
-            UserRepository userRepo,
-            PasswordEncoder encoder,
             TacoRepository tacoRepo) {
         return args -> {
             Ingredient flourTortilla = new Ingredient(
@@ -47,8 +43,6 @@ public class StartDataConfig {
                     "SLSA", "Salsa", Type.SAUCE);
             Ingredient sourCream = new Ingredient(
                     "SRCR", "Sour Cream", Type.SAUCE);
-            log.info("Saving ingredients...");
-            log.info("THIS IS A LOG");
             repo.save(flourTortilla);
             repo.save(cornTortilla);
             repo.save(groundBeef);
@@ -59,7 +53,6 @@ public class StartDataConfig {
             repo.save(jack);
             repo.save(salsa);
             repo.save(sourCream);
-            log.info("Ingredients saved");
             Taco taco1 = new Taco();
             taco1.setName("Carnivore");
             taco1.setIngredients(Arrays.asList(
@@ -78,8 +71,7 @@ public class StartDataConfig {
                     flourTortilla, cornTortilla, tomatoes,
                     lettuce, salsa));
             tacoRepo.save(taco3);
+            log.info("Ingredients and tacos saved");
         };
     }
-
-
 }

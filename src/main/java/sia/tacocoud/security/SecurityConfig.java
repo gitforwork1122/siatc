@@ -12,8 +12,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.oidc.user.OidcUserAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2UserAuthority;
 import org.springframework.security.web.SecurityFilterChain;
@@ -57,18 +55,14 @@ public class SecurityConfig {
         return new HttpSessionEventPublisher();
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
 
     @Bean
     public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
-                .requestMatchers(new AntPathRequestMatcher("/api/ingredients/*", HttpMethod.POST.name())).hasRole("admin")
-                .requestMatchers(new AntPathRequestMatcher("/api/ingredients/*", HttpMethod.DELETE.name())).hasRole("admin")
-                .requestMatchers(new AntPathRequestMatcher("/api/orders/*")).hasRole("user")
+                .requestMatchers(new AntPathRequestMatcher("/api/ingredients/*", HttpMethod.POST.name())).authenticated()
+                .requestMatchers(new AntPathRequestMatcher("/api/ingredients/*", HttpMethod.DELETE.name())).authenticated()
+                .requestMatchers(new AntPathRequestMatcher("/api/orders/*")).authenticated()
+                .requestMatchers(new AntPathRequestMatcher("/api/design")).authenticated()
                 .requestMatchers(new AntPathRequestMatcher("/api/*")).authenticated()
                 .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
                 .anyRequest().authenticated());
@@ -76,6 +70,10 @@ public class SecurityConfig {
         http.oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
         http.oauth2Login(Customizer.withDefaults())
                 .logout(logout -> logout.addLogoutHandler(keycloakLogoutHandler).logoutSuccessUrl("/"));
+
+//        DISABLED CSRF
+        http.csrf(csrf -> csrf.disable());
+
 
         return http.build();
     }

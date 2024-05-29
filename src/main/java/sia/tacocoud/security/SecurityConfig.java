@@ -17,6 +17,8 @@ import org.springframework.security.oauth2.core.user.OAuth2UserAuthority;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
+import org.springframework.security.web.firewall.HttpFirewall;
+import org.springframework.security.web.firewall.StrictHttpFirewall;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -59,6 +61,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
+                .requestMatchers(new AntPathRequestMatcher("/rabbit/orders")).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/kitchen/orders/receive")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/api/ingredients/*", HttpMethod.POST.name())).authenticated()
                 .requestMatchers(new AntPathRequestMatcher("/api/ingredients/*", HttpMethod.DELETE.name())).authenticated()
                 .requestMatchers(new AntPathRequestMatcher("/api/orders/*")).authenticated()

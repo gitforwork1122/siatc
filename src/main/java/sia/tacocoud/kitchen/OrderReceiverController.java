@@ -10,10 +10,9 @@ import sia.tacocoud.data.OrderRepository;
 import sia.tacocoud.kitchen.rabbit.RabbitOrderReceiver;
 import sia.tacocoud.model.Order;
 
-@Profile({"jms-template", "rabbitmq-template"})
+@Profile({"rabbitmq-template"})
 @Controller
 @RequestMapping("kitchen/orders")
-
 @RequiredArgsConstructor
 public class OrderReceiverController {
 

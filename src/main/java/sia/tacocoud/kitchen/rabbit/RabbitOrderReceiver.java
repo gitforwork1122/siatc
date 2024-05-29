@@ -16,7 +16,7 @@ public class RabbitOrderReceiver {
     }
 
     public Order receiveOrder() {
-        return (Order) rabbit.receiveAndConvert("tacocloud.order.queue");
+        return (Order) rabbit.receiveAndConvert("tacocloud.order");
     }
 
 
